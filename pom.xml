@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.aesh.quickstarts</groupId>
+    <artifactId>quickstart-projects</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+      <module>aesh/getting-started</module>
+      <module>aesh/getting-started-input</module>
+      <module>aesh/getting-started-runtime</module>
+      <module>readline/getting-started</module>
+      <module>readline/getting-started-ext</module>
+      <module>readline/shell</module>
+      <module>readline/snake</module>
+      <module>readline/shell-ssh</module>
+      <module>readline/shell-telnet</module>
+      <module>readline/shell-websocket</module>
+    </modules>
+</project>
