@@ -23,7 +23,7 @@ Launch the Maven build with:
 
 For simplicity we use the Maven shade plugin to package all the dependencies into on jar, to run:
 
-> java -jar target/getting-started-runtime0.1.jar --input
+> java -jar target/getting-started-runtime-0.1.jar --input
 or
-> java -jar target/getting-started-runtime0.1.jar --bar Foo
+> java -jar target/getting-started-runtime-0.1.jar --bar Foo
 

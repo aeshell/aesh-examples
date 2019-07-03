@@ -46,7 +46,7 @@
          <groupId>org.aesh</groupId>
          <artifactId>aesh</artifactId>
          <version>${aesh.version}</version>
-      </dependency>
+       </dependency>
     </dependencies>
 
     <build>
@@ -76,78 +76,12 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-shade-plugin</artifactId>
-              <version>${shade-plugin.version}</version>
-              <executions>
-                <execution>
-                  <phase>package</phase>
-                  <goals>
-                    <goal>shade</goal>
-                  </goals>
-                  <configuration>
-                    <artifactSet>
-                      <excludes>
-                        <exclude>org.fusesource.jansi:jansi</exclude>
-                        <exclude>org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-depchain</exclude>
-                        <exclude>junit:junit</exclude>
-                      </excludes>
-                    </artifactSet>
-                  </configuration>
-                </execution>
-              </executions>
-            </plugin>
-            -->
         </plugins>
     </build>
 
     <profiles>
       <profile>
-        <id>prepare</id>
-        <activation>
-          <property>
-            <name>prepare</name>
-          </property>
-        </activation>
-        <build>
-          <plugins>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>exec-maven-plugin</artifactId>
-              <version>1.6.0</version>
-              <executions>
-                <execution>
-                  <id>copy</id>
-                  <phase>package</phase>
-                  <goals>
-                    <goal>exec</goal>
-                  </goals>
-                </execution>
-              </executions>
-              <configuration>
-                <executable>java</executable>
-                <workingDirectory>target</workingDirectory>
-                <arguments>
-                  <argument>-cp</argument>
-                  <classpath/>
-                  <argument>org.aesh.util.GraalReflectionGenerator</argument>
-                  <argument>org.acme.runtime.NativeCommand</argument>
-                </arguments>
-              </configuration>
-            </plugin>
-          </plugins>
-        </build>
-      </profile>
- 
-      <profile>
         <id>native</id>
-        <activation>
-          <property>
-            <name>native</name>
-          </property>
-        </activation>
         <build>
           <plugins>
             <plugin>
@@ -179,26 +113,40 @@
                   <goals>
                     <goal>exec</goal>
                   </goals>
+                  <configuration>
+                    <executable>java</executable>
+                    <workingDirectory>target</workingDirectory>
+                    <arguments>
+                      <argument>-cp</argument>
+                      <classpath/>
+                      <argument>org.aesh.util.GraalReflectionGenerator</argument>
+                      <argument>org.acme.runtime.NativeCommand</argument>
+                    </arguments>
+                  </configuration>
+                </execution>
+                <execution>
+                  <id>native</id>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>exec</goal>
+                  </goals>
+                  <configuration>
+                    <executable>${env.GRAALVM_HOME}/bin/native-image</executable>
+                    <workingDirectory>target</workingDirectory>
+                    <arguments>
+                      <argument>--verbose</argument>
+                      <argument>-H:+ReportUnsupportedElementsAtRuntime</argument>
+                      <argument>-H:ReflectionConfigurationFiles=native_reflection.json</argument>
+                      <argument>-jar</argument>
+                      <argument>${project.build.finalName}.jar</argument>
+                    </arguments>
+                  </configuration>
                 </execution>
               </executions>
-              <configuration>
-                <executable>${env.GRAALVM_HOME}/bin/native-image</executable>
-                <workingDirectory>target</workingDirectory>
-                <arguments>
-                  <argument>--verbose</argument>
-                  <argument>-H:+ReportUnsupportedElementsAtRuntime</argument>
-                  <argument>-H:ReflectionConfigurationFiles=native_reflection.json</argument>
-                  <argument>-jar</argument>
-                  <argument>${project.build.finalName}.jar</argument>
-                </arguments>
-              </configuration>
             </plugin>
           </plugins>
         </build>
       </profile>
     </profiles>
-
-
-
 
   </project>
