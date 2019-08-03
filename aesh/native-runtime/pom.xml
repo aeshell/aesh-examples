@@ -28,8 +28,7 @@
     <version>0.1</version>
 
     <properties>
-      <aesh.version>2.4-SNAPSHOT</aesh.version>
-      <readline.version>1.17</readline.version>
+      <aesh.version>2.4</aesh.version>
 
       <!-- maven plugin versions -->
       <compiler-plugin.version>3.8.0</compiler-plugin.version>

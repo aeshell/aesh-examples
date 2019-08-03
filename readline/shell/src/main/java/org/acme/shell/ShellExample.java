@@ -28,12 +28,12 @@ import org.aesh.readline.terminal.formatting.Color;
 import org.aesh.readline.terminal.formatting.TerminalColor;
 import org.aesh.readline.terminal.formatting.TerminalString;
 import org.aesh.readline.tty.terminal.TerminalConnection;
+import org.aesh.readline.util.LoggerUtil;
 import org.aesh.terminal.Attributes;
 import org.aesh.terminal.Connection;
 import org.aesh.terminal.tty.Point;
 import org.aesh.terminal.tty.Signal;
-import org.aesh.utils.Config;
-import org.aesh.readline.util.LoggerUtil;
+import org.aesh.terminal.utils.Config;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;

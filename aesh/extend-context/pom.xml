@@ -28,8 +28,7 @@
     <version>0.1</version>
 
     <properties>
-      <aesh.version>2.3</aesh.version>
-      <readline.version>1.17</readline.version>
+      <aesh.version>2.4</aesh.version>
 
       <!-- maven plugin versions -->
       <compiler-plugin.version>3.8.0</compiler-plugin.version>
@@ -49,13 +48,6 @@
          <artifactId>aesh</artifactId>
          <version>${aesh.version}</version>
       </dependency>
-      <!--
-      <dependency>
-         <groupId>org.aesh</groupId>
-         <artifactId>aesh-readline</artifactId>
-         <version>${readline.version}</version>
-      </dependency>
-      -->
     </dependencies>
 
     <build>

@@ -53,13 +53,13 @@
     </plugins>
   </build>
   <properties>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <shade-plugin.version>3.2.1</shade-plugin.version>
-    <readline.version>1.17</readline.version>
-    <jar-plugin.version>3.1.1</jar-plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <compiler-plugin.version>3.8.0</compiler-plugin.version>
+    <readline.version>2.0</readline.version>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <compiler-plugin.version>3.8.0</compiler-plugin.version>
+    <shade-plugin.version>3.2.1</shade-plugin.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <jar-plugin.version>3.1.1</jar-plugin.version>
   </properties>
 </project>

@@ -28,7 +28,7 @@
     <version>0.1</version>
 
     <properties>
-      <readline.version>1.17</readline.version>
+      <readline.version>2.0</readline.version>
 
       <!-- maven plugin versions -->
       <compiler-plugin.version>3.8.0</compiler-plugin.version>
@@ -46,12 +46,12 @@
     <dependencies>
       <dependency>
          <groupId>org.aesh</groupId>
-         <artifactId>aesh-readline</artifactId>
+         <artifactId>readline</artifactId>
          <version>${readline.version}</version>
       </dependency>
       <dependency>
          <groupId>org.aesh</groupId>
-         <artifactId>aesh-terminal-http</artifactId>
+         <artifactId>terminal-http</artifactId>
          <version>${readline.version}</version>
       </dependency>
       <dependency>

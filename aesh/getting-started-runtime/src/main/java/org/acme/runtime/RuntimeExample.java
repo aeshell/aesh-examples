@@ -42,7 +42,7 @@ public class RuntimeExample {
         private boolean input;
 
         @Override
-        public CommandResult execute(CommandInvocation commandInvocation) {
+        public CommandResult execute(CommandInvocation commandInvocation) throws InterruptedException {
             if(input) {
               String answer = commandInvocation.getShell().readLine("What is the answer? ");
               commandInvocation.println("The answer is: "+answer);

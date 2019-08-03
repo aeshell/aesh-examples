@@ -53,12 +53,12 @@
     </plugins>
   </build>
   <properties>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <shade-plugin.version>3.2.1</shade-plugin.version>
-    <readline.version>1.17</readline.version>
-    <aesh.version>2.3</aesh.version>
-    <jar-plugin.version>3.1.1</jar-plugin.version>
+    <readline.version>2.0</readline.version>
+    <aesh.version>2.4</aesh.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <compiler-plugin.version>3.8.0</compiler-plugin.version>
+    <shade-plugin.version>3.2.1</shade-plugin.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <jar-plugin.version>3.1.1</jar-plugin.version>
   </properties>
 </project>
