@@ -34,7 +34,7 @@
       <compiler-plugin.version>3.8.0</compiler-plugin.version>
       <jar-plugin.version>3.1.1</jar-plugin.version>
       <shade-plugin.version>3.2.1</shade-plugin.version>
-      <netty.version>4.1.50.Final</netty.version>
+      <netty.version>4.1.94.Final</netty.version>
 
       <maven.compiler.target>1.8</maven.compiler.target>
       <maven.compiler.source>1.8</maven.compiler.source>
