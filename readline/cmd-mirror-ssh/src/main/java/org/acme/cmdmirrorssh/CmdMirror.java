@@ -21,10 +21,10 @@ package org.acme.cmdmirrorssh;
 
 import org.aesh.readline.Readline;
 import org.aesh.readline.ReadlineBuilder;
-import org.aesh.readline.tty.terminal.TerminalConnection;
+import org.aesh.terminal.tty.TerminalConnection;
 import org.aesh.terminal.Connection;
 import org.aesh.terminal.tty.Signal;
-import org.aesh.utils.Config;
+import org.aesh.terminal.utils.Config;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

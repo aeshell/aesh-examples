@@ -24,6 +24,7 @@ import org.aesh.command.Command;
 import org.aesh.command.CommandDefinition;
 import org.aesh.command.CommandResult;
 import org.aesh.command.invocation.CommandInvocation;
+import org.aesh.terminal.utils.ANSI;
 
 /**
  * A very simple example
@@ -41,8 +42,18 @@ public class SimpleExample {
     @CommandDefinition(name = "hello", description = "hello from aesh")
     public static class HelloCommand implements Command {
         @Override
-        public CommandResult execute(CommandInvocation commandInvocation) {
-            commandInvocation.println("Hello from Aesh!");
+        public CommandResult execute(CommandInvocation ci) {
+            // ci.print(ANSI.ALTERNATE_BUFFER);
+      ci.getShell().enableAlternateBuffer();
+            ci.println("Hello from Aesh!");
+      try {
+            Thread.sleep(3000);
+      }
+      catch(Exception e) {
+
+      }
+            // ci.print(ANSI.MAIN_BUFFER);
+      ci.getShell().enableMainBuffer();
             return CommandResult.SUCCESS;
         }
     }

@@ -19,10 +19,11 @@
  */
 package org.acme.snake;
 
-import org.aesh.readline.tty.terminal.TerminalConnection;
-import org.aesh.readline.util.LoggerUtil;
+import org.aesh.terminal.tty.TerminalConnection;
+import org.aesh.terminal.utils.LoggerUtil;
 import org.aesh.terminal.Attributes;
 import org.aesh.terminal.Connection;
+import org.aesh.terminal.tty.Capability;
 import org.aesh.terminal.tty.Point;
 import org.aesh.terminal.tty.Size;
 import org.aesh.terminal.utils.ANSI;
@@ -182,7 +183,8 @@ public class Snake implements Consumer<Connection> {
         conn.setSizeHandler(size -> reset(conn));
 
          //switch to alternate buffer
-        conn.write(ANSI.ALTERNATE_BUFFER);
+        // conn.write(ANSI.ALTERNATE_BUFFER);
+        conn.device().puts(conn.stdoutHandler(), Capability.enter_ca_mode);
         conn.write(ANSI.CURSOR_HIDE);
 
         attributes = conn.enterRawMode();

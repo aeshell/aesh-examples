@@ -28,12 +28,17 @@
     <version>0.1</version>
 
     <properties>
-      <readline.version>2.6</readline.version>
+      <readline.version>3.0</readline.version>
 
       <!-- maven plugin versions -->
-      <compiler-plugin.version>3.8.0</compiler-plugin.version>
-      <jar-plugin.version>3.1.1</jar-plugin.version>
-      <shade-plugin.version>3.2.1</shade-plugin.version>
+      <compiler-plugin.version>3.14.0</compiler-plugin.version>
+      <jar-plugin.version>3.4.2</jar-plugin.version>
+      <shade-plugin.version>3.6.0</shade-plugin.version>
+
+      <!-- dependency versions -->
+      <netty.version>4.1.81.Final</netty.version>
+      <mina-core.version>2.2.4</mina-core.version>
+      <sshd-core.version>2.14.0</sshd-core.version>
 
       <maven.compiler.target>1.8</maven.compiler.target>
       <maven.compiler.source>1.8</maven.compiler.source>
@@ -54,14 +59,29 @@
          <version>${readline.version}</version>
       </dependency>
       <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-common</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-transport</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-handler</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.mina</groupId>
         <artifactId>mina-core</artifactId>
-        <version>2.0.9</version>
+        <version>${mina-core.version}</version>
       </dependency>
       <dependency>
         <groupId>org.apache.sshd</groupId>
         <artifactId>sshd-core</artifactId>
-        <version>1.0.0</version>
+        <version>${sshd-core.version}</version>
         <optional>true</optional>
         <exclusions>
           <exclusion>
@@ -70,7 +90,19 @@
           </exclusion>
         </exclusions>
       </dependency>
- 
+      <dependency>
+        <groupId>org.apache.sshd</groupId>
+        <artifactId>sshd-netty</artifactId>
+        <version>${sshd-core.version}</version>
+        <optional>true</optional>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
       <dependency>
          <groupId>org.acme</groupId>
          <artifactId>shell</artifactId>
