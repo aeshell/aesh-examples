@@ -31,7 +31,10 @@ import org.acme.shell.ShellExample;
 public class WebSocketShellExample {
 
     public static synchronized void main(String[] args) throws Exception {
-        NettyWebsocketTtyBootstrap bootstrap = new NettyWebsocketTtyBootstrap().setHost("localhost").setPort(8080);
+        NettyWebsocketTtyBootstrap bootstrap = new NettyWebsocketTtyBootstrap()
+                .setHost("localhost")
+                .setPort(8080)
+                .setResourcePath("/org/acme/shellwebsocket/web");
         bootstrap.start(new ShellExample()).get(10, TimeUnit.SECONDS);
         System.out.println("Web server started on localhost:8080");
         WebSocketShellExample.class.wait();

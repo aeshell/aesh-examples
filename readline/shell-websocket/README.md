@@ -33,7 +33,29 @@ Then open your browser to `http://localhost:8080` to connect to the WebSocket te
 
 The web terminal includes:
 - Modern xterm.js terminal emulator
-- Responsive sizing (adapts to browser window)
+- Fixed size 120x40 terminal
 - Connection status indicator
 - Cursor blinking
 - Text selection support
+
+## Customizing the Web Page
+
+This example demonstrates how to use a custom HTML page instead of the default provided by `terminal-http`.
+The custom `index.html` is located at `src/main/resources/org/acme/shellwebsocket/web/`.
+
+To use a custom resource path, configure the bootstrap:
+
+```java
+NettyWebsocketTtyBootstrap bootstrap = new NettyWebsocketTtyBootstrap()
+        .setHost("localhost")
+        .setPort(8080)
+        .setResourcePath("/org/acme/shellwebsocket/web");
+```
+
+You can also disable static file serving entirely for WebSocket-only mode:
+
+```java
+bootstrap.setServeStaticFiles(false);
+```
+
+In WebSocket-only mode, you would serve your HTML from a separate web server and only use `terminal-http` for the WebSocket connection at `/ws`.
