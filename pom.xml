@@ -19,5 +19,6 @@
       <module>readline/shell-ssh</module>
       <module>readline/shell-telnet</module>
       <module>readline/shell-websocket</module>
+      <module>readline/shell-multi</module>
     </modules>
 </project>

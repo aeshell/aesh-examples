@@ -17,8 +17,9 @@ This repository contains a set of examples for Æsh and Æsh-Readline.
 * [Readline - Shell](./readline/shell): A simple shell
 * [Readline - Snake](./readline/snake): Snake
 * [Readline - SSH Shell](./readline/shell-ssh): The shell example over SSH
-* [Readline - SSH Telnet](./readline/shell-telnet): The shell example over Telnet
-* [Readline - SSH WebSoket](./readline/shell-websocket): The shell example over WebSocket
+* [Readline - Telnet Shell](./readline/shell-telnet): The shell example over Telnet
+* [Readline - WebSocket Shell](./readline/shell-websocket): The shell example over WebSocket
+* [Readline - SSH & WebSoket shell](./readline/shell-multi): The shell example over WebSocket AND SSH
 * [Readline - Command Mirror SSH](./readline/cmd-mirror-ssh): A simple readline application that will run try the input as commands on the OS. - this is not meant to be used in production as it is not safe without proper parsing of what commands to run.
 
 ## Prerequisite
