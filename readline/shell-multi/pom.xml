@@ -30,7 +30,7 @@
     <description>Example demonstrating SSH and WebSocket connections sharing the same shell</description>
 
     <properties>
-      <readline.version>3.0</readline.version>
+      <readline.version>3.16.3</readline.version>
 
       <!-- maven plugin versions -->
       <compiler-plugin.version>3.14.0</compiler-plugin.version>

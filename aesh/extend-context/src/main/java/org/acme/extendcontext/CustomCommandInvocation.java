@@ -9,7 +9,7 @@ import org.aesh.command.parser.CommandLineParserException;
 import org.aesh.command.shell.Shell;
 import org.aesh.command.validator.CommandValidatorException;
 import org.aesh.command.validator.OptionValidatorException;
-import org.aesh.readline.Prompt;
+import org.aesh.readline.prompt.Prompt;
 import org.aesh.readline.action.KeyAction;
 
 import java.io.IOException;

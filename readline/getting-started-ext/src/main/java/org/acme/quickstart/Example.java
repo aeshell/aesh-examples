@@ -19,7 +19,7 @@
  */
 package org.acme.quickstart;
 
-import org.aesh.readline.Prompt;
+import org.aesh.readline.prompt.Prompt;
 import org.aesh.readline.Readline;
 import org.aesh.readline.alias.AliasCompletion;
 import org.aesh.readline.alias.AliasManager;
@@ -65,34 +65,29 @@ public class Example implements Consumer<Connection> {
 
     @Override
     public void accept(Connection connection) {
-        try {
-            defaultPrompt = createDefaultPrompt();
-            preProcessors = new ArrayList<>();
-            if(ALIAS) {
-                aliasManager = new AliasManager(null, false);
-                AliasPreProcessor aliasPreProcessor = new AliasPreProcessor(aliasManager);
-                preProcessors.add(aliasPreProcessor);
-                aliasCompletion = new AliasCompletion(aliasManager);
+        defaultPrompt = createDefaultPrompt();
+        preProcessors = new ArrayList<>();
+        if(ALIAS) {
+            aliasManager = new AliasManager(null, false);
+            AliasPreProcessor aliasPreProcessor = new AliasPreProcessor(aliasManager);
+            preProcessors.add(aliasPreProcessor);
+            aliasCompletion = new AliasCompletion(aliasManager);
+        }
+        Readline readline = new Readline();
+        connection.setSignalHandler( signal -> {
+            if(signal == Signal.INT) {
+                connection.write("we're catching ctrl-c, just continuing.\n");
+                if(sleeperThread != null)
+                    sleeperThread.interrupt();
             }
-            Readline readline = new Readline();
-            connection.setSignalHandler( signal -> {
-                if(signal == Signal.INT) {
-                    connection.write("we're catching ctrl-c, just continuing.\n");
-                    if(sleeperThread != null)
-                        sleeperThread.interrupt();
-                }
-            });
+        });
 
-            connection.setCloseHandler(close -> {
-                connection.write("connection closed, we're shutting down, do something...!"+ Config.getLineSeparator());
-            });
+        connection.setCloseHandler(close -> {
+            connection.write("connection closed, we're shutting down, do something...!"+ Config.getLineSeparator());
+        });
 
-            readInput(connection, readline, defaultPrompt);
-            connection.openBlocking();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        readInput(connection, readline, defaultPrompt);
+        connection.openBlocking();
     }
 
     public static void readInput(Connection connection, Readline readline, Prompt prompt) {
@@ -107,9 +102,9 @@ public class Example implements Consumer<Connection> {
                 readInput(connection, readline, defaultPrompt);
             }
             else if(ALIAS && line.startsWith("alias")) {
-                String out = aliasManager.parseAlias(line.trim());
-                if(out != null)
-                    connection.write(out);
+                java.util.Optional<String> out = aliasManager.addAlias(line.trim());
+                if(out.isPresent())
+                    connection.write(out.get());
                 readInput(connection, readline, defaultPrompt);
             }
             else if(ALIAS && line.startsWith("unalias")) {
@@ -165,7 +160,7 @@ public class Example implements Consumer<Connection> {
                 connection.write("=====>_"+line+"_\n");
                 readInput(connection, readline, prompt);
             }
-        }, getCompletions(), preProcessors);
+        }, getCompletions());
     }
 
     private static List<Completion> getCompletions() {

@@ -28,7 +28,7 @@
     <version>0.1</version>
 
     <properties>
-      <readline.version>3.0</readline.version>
+      <readline.version>3.16.3</readline.version>
 
       <!-- maven plugin versions -->
       <compiler-plugin.version>3.14.0</compiler-plugin.version>

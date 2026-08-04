@@ -19,7 +19,7 @@
  */
 package org.acme.shell;
 
-import org.aesh.readline.Prompt;
+import org.aesh.readline.prompt.Prompt;
 import org.aesh.readline.Readline;
 import org.aesh.readline.completion.Completion;
 import org.aesh.readline.editing.EditMode;
@@ -31,7 +31,6 @@ import org.aesh.terminal.tty.TerminalConnection;
 import org.aesh.terminal.utils.LoggerUtil;
 import org.aesh.terminal.Attributes;
 import org.aesh.terminal.Connection;
-import org.aesh.terminal.tty.Point;
 import org.aesh.terminal.tty.Signal;
 import org.aesh.terminal.utils.Config;
 
@@ -376,9 +375,7 @@ public class ShellExample implements Consumer<Connection>{
         cursor() {
             @Override
             public void execute(Connection conn, List<String> args) throws Exception {
-                conn.write("cursor position is: ");
-                Point p = conn.getCursorPosition();
-                conn.write(p.toString()+Config.getLineSeparator());
+                conn.write("cursor position query is not supported in this version." + Config.getLineSeparator());
             }
 
         };
